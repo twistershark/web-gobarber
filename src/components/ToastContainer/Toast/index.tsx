@@ -37,7 +37,12 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
   return (
     <Container
       type={message.type}
-      hasDescription={!!message.description}
+      /**
+       * Para resolvermos o problema de passar um boolean para o HTML,
+       * vamos utilizar um Number para converter nosso boleano para um
+       * número. Assim o HTML não vai mostrar msg de erro no console.
+       */
+      hasDescription={Number(!!message.description)}
       style={style}
     >
       {icons[message.type || 'info']}
